@@ -18,7 +18,7 @@
 
 <form action="/lists/<%= it.id %>/items" method="POST">
     <input type="text" name="name" value="" >
-    <input type="submit" value="Submit!" />
+    <input type="submit" value="Submit!" id="add-item" />
 </form>
 
 <a href="/lists">Shopping lists</a>

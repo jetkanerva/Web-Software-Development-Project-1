@@ -13,7 +13,7 @@
 <% } %>
 <form method="POST">
     <input type="text" name="name" value="" />
-    <input type="submit" value="Submit!" />
+    <input type="submit" value="Submit!" id="add-list"/>
 </form>
 
 <a href="/">Main page</a>
