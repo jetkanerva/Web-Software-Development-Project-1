@@ -1,0 +1,10 @@
+<h1>Shopping List Statistics</h1>
+<% if (!it.listsCount && !it.itemsCount) { %>
+    <p>No shopping lists yet.</p>
+<% } else { %>
+    <ul>
+        <li>Shopping lists: <%= it.listsCount %></li>
+        <li>Shopping list items: <%= it.itemsCount %></li>
+    </ul>
+<% } %>
+<a href="/lists">Shopping lists</a>

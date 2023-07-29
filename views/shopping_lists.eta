@@ -1,0 +1,19 @@
+<h1>Shopping Lists</h1>
+<% if (it.lists) { %>
+<ul>
+    <% for(let list of it.lists) { %>
+        <li>
+            <a href="/lists/<%= list.id %>"><%= list.name %></a>
+            <form action="/lists/<%= list.id %>/deactivate" method="POST">
+                <input type="submit" value="Deactivate list!" />
+            </form>
+        </li>
+    <% } %>
+</ul>
+<% } %>
+<form method="POST">
+    <input type="text" name="name" value="" />
+    <input type="submit" value="Submit!" />
+</form>
+
+<a href="/">Main page</a>
