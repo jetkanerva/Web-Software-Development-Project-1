@@ -5,7 +5,8 @@ import {
     getListsQuery,
     deactivateListQuery,
     addListItemQuery,
-    statisticsQuery
+    statisticsQuery,
+    getNameByIdQuery
 } from "../../services/shoppingService.js";
 
 // This page handles requests and calls appropriate functions to retrieve data
@@ -28,12 +29,15 @@ const addList = async ({ request, response }) => {
     const name = data.get("name");
     await addListQuery(name);
 
+    response.status = 303;
     response.redirect("/lists");
 };
 
 const getListById = async ({ params, render }) => {
     const id = params.id;
     console.log(id);
+    const name = await getNameByIdQuery(id);
+    console.log(name)
     const lists = await getListByIdQuery(id);
 
     lists.sort((a, b) => {
@@ -46,7 +50,7 @@ const getListById = async ({ params, render }) => {
         }
     });
 
-    render('shopping_list.eta', { lists, id });
+    render('shopping_list.eta', { lists, id, name });
 };
 
 const deactivateList = async ({ params, response }) => {
@@ -54,6 +58,7 @@ const deactivateList = async ({ params, response }) => {
     console.log(id);
     await deactivateListQuery(id);
 
+    response.status = 303;
     response.redirect("/lists");
 };
 
@@ -62,6 +67,8 @@ const isCollected = async ({ response, params }) => {
     const id = params.id;
     console.log(itemId);
     await isCollectedQuery(itemId, id);
+
+    response.status = 303;
     response.redirect(`/lists/${id}`);
 };
 
@@ -75,6 +82,8 @@ const addListItem = async ({ params, request, response }) => {
     console.log(params.id);
 
     await addListItemQuery(params.id, name);
+
+    response.status = 303;
     response.redirect(`/lists/${params.id}`);
 };
 

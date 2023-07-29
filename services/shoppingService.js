@@ -1,4 +1,4 @@
-import { sql } from "../database/database.js";
+import {sql} from "../database/database.js";
 
 // This page runs SQL queries to fetch, update, or add data to database
 
@@ -25,6 +25,11 @@ const deactivateListQuery = async (id) => {
     return await sql`UPDATE shopping_lists SET active = false WHERE id = ${id}`;
 };
 
+const getNameByIdQuery = async (id) => {
+    const names = await sql`SELECT name FROM shopping_lists WHERE id = ${id}`;
+    return names[0].name;
+}
+
 const getListByIdQuery = async (id) => {
     const listById = await sql`SELECT * FROM shopping_list_items WHERE shopping_list_id = ${id}`;
     console.log(listById);
@@ -39,4 +44,4 @@ const isCollectedQuery = async (item_id, id) => {
     return await sql`UPDATE shopping_list_items SET collected = true WHERE id = ${item_id} AND shopping_list_id = ${id}`;
 };
 
-export { getListsQuery, addListQuery, getListByIdQuery, deactivateListQuery, isCollectedQuery, addListItemQuery, statisticsQuery };
+export { getListsQuery, addListQuery, getListByIdQuery, deactivateListQuery, isCollectedQuery, addListItemQuery, statisticsQuery, getNameByIdQuery };

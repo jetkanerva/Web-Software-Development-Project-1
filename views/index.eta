@@ -1,5 +1,5 @@
-<h1>Shopping List Statistics</h1>
-<% if (!it.listsCount && !it.itemsCount) { %>
+<h1>Shared shopping lists</h1>
+<% if (!it.listsCount < 1 && !it.itemsCount < 1) { %>
     <p>No shopping lists yet.</p>
 <% } else { %>
     <ul>
@@ -7,4 +7,4 @@
         <li>Shopping list items: <%= it.itemsCount %></li>
     </ul>
 <% } %>
-<a href="/lists">Shopping lists</a>
+<a href="/lists">Lists</a>
