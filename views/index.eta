@@ -1,5 +1,5 @@
 <h1>Shared shopping lists</h1>
-<% if (!it.listsCount < 1 && !it.itemsCount < 1) { %>
+<% if (it.listsCount < 1 && it.itemsCount < 1  || !it.listsCount && !it.itemsCount) { %>
     <p>No shopping lists yet.</p>
 <% } else { %>
     <ul>
